@@ -27,7 +27,7 @@ stop)
     stop ${2:-payaradomain}
     ;;
 restart)
-    $PAYARA_HOME/bin/asadmin restart-domain >/dev/null
+    $PAYARA_HOME/bin/asadmin restart-domain ${2:-payaradomain} >/dev/null
     ;;
 \*)
     echo "usage: $0 (start|stop|restart|help)"

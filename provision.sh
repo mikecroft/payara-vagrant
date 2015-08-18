@@ -121,6 +121,18 @@ installService() {
 	esac
 }
 
+enableSecureAdmin() {
+    
+    # sets user/password to admin/admin
+    cd $PAYARA_HOME
+    echo "admin;{SSHA256}007ZbJ+5Roet5r+39eIscQoZEtaEMCfVdKvQfesZ26mTMiUS6lqlcA==;asadmin" > $PAYARA_HOME/payara41/glassfish/domains/payaradomain/config/admin-keyfile
+    echo "AS_ADMIN_PASSWORD=admin" > pwdfile
+    chown -R vagrant:vagrant .
+    # su - vagrant -c 'service payara start payaradomain'
+    su - vagrant -c "$PAYARA_HOME/payara41/bin/asadmin --user admin --passwordfile pwdfile enable-secure-admin"
+    su - vagrant -c "service payara restart payaradomain"
+}
+
 installPayara
 
 if [ $PAYARA_ED = $WEB                 ] ||
@@ -128,4 +140,5 @@ if [ $PAYARA_ED = $WEB                 ] ||
    [ $PAYARA_ED = $MULTI_LANGUAGE_FULL ] ||
    [ $PAYARA_ED = $MULTI_LANGUAGE_WEB  ]; then
 	installService
+    enableSecureAdmin
 fi
