@@ -129,7 +129,7 @@ enableSecureAdmin() {
     echo "AS_ADMIN_PASSWORD=admin" > pwdfile
     chown -R vagrant:vagrant .
     # su - vagrant -c 'service payara start payaradomain'
-    su - vagrant -c "$PAYARA_HOME/payara41/bin/asadmin --user admin --passwordfile pwdfile enable-secure-admin"
+    su - vagrant -c "$PAYARA_HOME/payara41/bin/asadmin --user admin --passwordfile $PAYARA_HOME/pwdfile enable-secure-admin"
     su - vagrant -c "service payara restart payaradomain"
 }
 
