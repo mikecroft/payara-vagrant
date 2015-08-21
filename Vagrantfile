@@ -9,12 +9,15 @@ Vagrant.configure(2) do |config|
    end
    
    config.vm.provision "shell", path: "provision.sh"
+   config.vm.provision "shell", inline: 'sudo printf "\n10.0.0.100 das das" >> /etc/hosts'
+   config.vm.provision "shell", inline: 'sudo printf "\n10.0.0.101 node1 node1" >> /etc/hosts'
+   config.vm.provision "shell", inline: 'sudo printf "\n10.0.0.102 node2 node2" >> /etc/hosts'
    
    
    # Begin cluster config
    config.vm.define "das" do |das|
       das.vm.network :forwarded_port, guest: 4848, host: 4141
-      das.vm.network :forwarded_port, guest: 8080, host: 8181
+      #das.vm.network :forwarded_port, guest: 8080, host: 7171
       das.vm.hostname = "das"
       das.vm.network "private_network", ip: "10.0.0.100", :netmask => "255.255.0.0"
    end
