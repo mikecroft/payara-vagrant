@@ -20,6 +20,11 @@ Vagrant.configure(2) do |config|
       #das.vm.network :forwarded_port, guest: 8080, host: 7171
       das.vm.hostname = "das"
       das.vm.network "private_network", ip: "10.0.0.100", :netmask => "255.255.0.0"
+   
+      das.vm.provider "virtualbox" do |vb|
+        vb.memory = "1024"
+      end
+   
    end
 
    config.vm.define "node1" do |node1|

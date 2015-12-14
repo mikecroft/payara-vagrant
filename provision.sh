@@ -62,7 +62,7 @@ case "$PAYARA_VERSION" in
 esac
 
 # Payara edition (Full, Web, Micro, etc., from above list)
-PAYARA_ED=$WEB
+PAYARA_ED=$FULL
 
 #
 #
