@@ -3,7 +3,8 @@
 
 PORT=4848
 HOST=das
-PAYA_HOME=/opt/payara/payara-4.1.153/payara41/
-NODE_HOME=$PAYA_HOME/glassfish/nodes/
-ASADMIN=$PAYA_HOME/glassfish/bin/asadmin
-RASADMIN="$ASADMIN --user admin --passwordfile=$PAYA_HOME/pfile --port $PORT --host $HOST"
+PAYARA_VERSION=181
+PAYARA_HOME=/opt/payara/server/$PAYARA_VERSION
+NODE_HOME=$PAYARA_HOME/glassfish/nodes/
+ASADMIN=$PAYARA_HOME/glassfish/bin/asadmin
+RASADMIN="$ASADMIN --user admin --passwordfile=$PAYARA_HOME/pfile --port $PORT --host $HOST"
