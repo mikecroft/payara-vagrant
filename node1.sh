@@ -3,7 +3,7 @@
 set -o nounset                              # Treat unset variables as an error
 
 PORT=${1-4848}
-HOST=${2-das}
+HOST=${2-node1}
 PAYARA_VERSION=4.174
 PAYARA_ROOT=/opt/payara/server
 PAYARA_HOME=$PAYARA_ROOT/$PAYARA_VERSION
